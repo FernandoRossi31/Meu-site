@@ -1,0 +1,98 @@
+/* ====== CORES E FONTES — mude aqui pra personalizar tudo de uma vez ====== */
+:root {
+  --cor-fundo: #f5f2ea;
+  --cor-texto: #1c2b2e;
+  --cor-destaque: #c9622a;
+  --cor-card: #ffffff;
+  --fonte-titulo: 'Georgia', 'Times New Roman', serif;
+  --fonte-texto: 'Helvetica Neue', Arial, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: var(--fonte-texto);
+  line-height: 1.6;
+}
+
+/* ====== CABEÇALHO ====== */
+.topo {
+  text-align: center;
+  padding: 4rem 1.5rem 3rem;
+  border-bottom: 3px solid var(--cor-destaque);
+}
+
+.topo h1 {
+  font-family: var(--fonte-titulo);
+  font-size: 3rem;
+  letter-spacing: 1px;
+}
+
+.subtitulo {
+  margin-top: 0.5rem;
+  color: var(--cor-destaque);
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+/* ====== GALERIA ====== */
+.galeria {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.item {
+  background: var(--cor-card);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(28, 43, 46, 0.08);
+}
+
+.midia img,
+.midia video {
+  width: 100%;
+  display: block;
+}
+
+.texto {
+  padding: 1.5rem 2rem 2rem;
+  border-left: 4px solid var(--cor-destaque);
+}
+
+.texto h2 {
+  font-family: var(--fonte-titulo);
+  font-size: 1.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.texto p {
+  color: #3a3a3a;
+}
+
+/* ====== RODAPÉ ====== */
+.rodape {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* ====== RESPONSIVO (celular) ====== */
+@media (max-width: 600px) {
+  .topo h1 {
+    font-size: 2.2rem;
+  }
+  .texto {
+    padding: 1.2rem 1.3rem 1.5rem;
+  }
+}
