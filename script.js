@@ -140,7 +140,12 @@ max:90
 }
 
 );
-
+/* =============================== ATIVAR MÚSICA COM CLIQUE =============================== */
+document.body.addEventListener("click", () => {
+    if (musica.paused) {
+        musica.play();
+    }
+});
 fogos.start();
 
 /* música */
