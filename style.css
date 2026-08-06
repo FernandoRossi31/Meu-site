@@ -1,98 +1,662 @@
-/* ====== CORES E FONTES — mude aqui pra personalizar tudo de uma vez ====== */
-:root {
-  --cor-fundo: #f5f2ea;
-  --cor-texto: #1c2b2e;
-  --cor-destaque: #c9622a;
-  --cor-card: #ffffff;
-  --fonte-titulo: 'Georgia', 'Times New Roman', serif;
-  --fonte-texto: 'Helvetica Neue', Arial, sans-serif;
+/* ==========================================
+   UM ANO DE NÓS ❤️
+   Fernando & Ana Lívia
+========================================== */
+
+:root{
+
+    --rosa:#ff4f81;
+    --rosa-claro:#ffd7e2;
+
+    --branco:#ffffff;
+
+    --texto:#f5f5f5;
+
+    --escuro:#111111;
+
+    --preto:#000000;
+
+    --glass:rgba(255,255,255,.12);
+
+    --glass-border:rgba(255,255,255,.25);
+
+    --sombra:0 20px 60px rgba(0,0,0,.35);
+
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
 }
 
-body {
-  background: var(--cor-fundo);
-  color: var(--cor-texto);
-  font-family: var(--fonte-texto);
-  line-height: 1.6;
+html{
+
+    scroll-behavior:smooth;
+
 }
 
-/* ====== CABEÇALHO ====== */
-.topo {
-  text-align: center;
-  padding: 4rem 1.5rem 3rem;
-  border-bottom: 3px solid var(--cor-destaque);
+body{
+
+    background:#000;
+
+    color:white;
+
+    font-family:'Poppins',sans-serif;
+
+    overflow-x:hidden;
+
 }
 
-.topo h1 {
-  font-family: var(--fonte-titulo);
-  font-size: 3rem;
-  letter-spacing: 1px;
+/* ==========================
+        FIREWORKS
+========================== */
+
+#fireworks{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:999;
+
 }
 
-.subtitulo {
-  margin-top: 0.5rem;
-  color: var(--cor-destaque);
-  font-size: 1.1rem;
-  font-style: italic;
+/* ==========================
+        HEARTS
+========================== */
+
+#hearts{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:998;
+
 }
 
-/* ====== GALERIA ====== */
-.galeria {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 3rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 3.5rem;
+.heartFloat{
+
+    position:absolute;
+
+    color:#ff5d8f;
+
+    animation:floatHeart linear infinite;
+
+    opacity:.7;
+
 }
 
-.item {
-  background: var(--cor-card);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(28, 43, 46, 0.08);
+@keyframes floatHeart{
+
+    from{
+
+        transform:translateY(120vh);
+
+        opacity:0;
+
+    }
+
+    20%{
+
+        opacity:.8;
+
+    }
+
+    to{
+
+        transform:translateY(-20vh);
+
+        opacity:0;
+
+    }
+
 }
 
-.midia img,
-.midia video {
-  width: 100%;
-  display: block;
+/* ==========================
+        INTRO
+========================== */
+
+#intro{
+
+    width:100%;
+
+    height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    background:
+
+    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.9)),
+    url("Fotos/TESTE.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+
 }
 
-.texto {
-  padding: 1.5rem 2rem 2rem;
-  border-left: 4px solid var(--cor-destaque);
+.intro-container{
+
+    width:min(800px,90%);
+
 }
 
-.texto h2 {
-  font-family: var(--fonte-titulo);
-  font-size: 1.5rem;
-  margin-bottom: 0.6rem;
+.heart{
+
+    font-size:70px;
+
+    animation:pulse 2s infinite;
+
 }
 
-.texto p {
-  color: #3a3a3a;
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.25);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
 }
 
-/* ====== RODAPÉ ====== */
-.rodape {
-  text-align: center;
-  padding: 2.5rem 1.5rem;
-  color: #777;
-  font-size: 0.9rem;
+.intro-container h1{
+
+    margin-top:20px;
+
+    font-size:4rem;
+
+    font-family:'Cormorant Garamond',serif;
+
+    letter-spacing:2px;
+
 }
 
-/* ====== RESPONSIVO (celular) ====== */
-@media (max-width: 600px) {
-  .topo h1 {
-    font-size: 2.2rem;
-  }
-  .texto {
-    padding: 1.2rem 1.3rem 1.5rem;
-  }
+.intro-container span{
+
+    color:var(--rosa);
+
+}
+
+#typing{
+
+    margin-top:40px;
+
+    min-height:80px;
+
+    font-size:1.3rem;
+
+    line-height:2;
+
+}
+
+.numero{
+
+    margin-top:60px;
+
+    font-size:130px;
+
+    font-weight:bold;
+
+    color:var(--rosa);
+
+    opacity:0;
+
+}
+
+#btnComecar{
+
+    margin-top:60px;
+
+    padding:18px 55px;
+
+    border:none;
+
+    border-radius:60px;
+
+    background:var(--rosa);
+
+    color:white;
+
+    font-size:1.2rem;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    display:none;
+
+}
+
+#btnComecar:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:0 0 30px #ff4f81;
+
+}
+/* ==========================================
+            LOGIN
+========================================== */
+
+.hidden{
+    display:none !important;
+}
+
+#login{
+    width:100%;
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.90)),
+    url("Fotos/TESTE.jpg");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.login-box{
+
+    width:min(420px,90%);
+
+    padding:45px;
+
+    background:rgba(255,255,255,.10);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    border-radius:25px;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+
+    text-align:center;
+
+    animation:fadeUp 1s;
+
+}
+
+.login-box h2{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:2.7rem;
+
+    margin-bottom:10px;
+
+}
+
+.login-box p{
+
+    opacity:.9;
+
+    margin-bottom:25px;
+
+}
+
+.login-box input{
+
+    width:100%;
+
+    padding:16px;
+
+    margin-bottom:18px;
+
+    border:none;
+
+    border-radius:50px;
+
+    outline:none;
+
+    font-size:16px;
+
+    text-align:center;
+
+}
+
+.login-box button{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    background:#ff4f81;
+
+    color:white;
+
+    font-size:17px;
+
+    transition:.35s;
+
+}
+
+.login-box button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 25px rgba(255,79,129,.4);
+
+}
+
+#mensagem-erro{
+
+    display:none;
+
+    color:#ff8d8d;
+
+    margin-top:18px;
+
+    font-weight:bold;
+
+}
+
+/* ==========================================
+            SITE
+========================================== */
+
+#site{
+
+    background:#111;
+
+}
+
+header{
+
+    text-align:center;
+
+    padding:90px 20px;
+
+}
+
+header h1{
+
+    font-size:4rem;
+
+    font-family:'Cormorant Garamond',serif;
+
+}
+
+header p{
+
+    margin-top:15px;
+
+    color:#ffd3df;
+
+    font-size:1.2rem;
+
+}
+
+.timeline{
+
+    width:min(1100px,92%);
+
+    margin:auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:80px;
+
+    padding-bottom:100px;
+
+}
+
+/* ==========================================
+            CARDS
+========================================== */
+
+.card{
+
+    background:rgba(255,255,255,.06);
+
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.35);
+
+    opacity:0;
+
+    transform:translateY(80px);
+
+    transition:1s;
+
+}
+
+.card.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+.media{
+
+    background:black;
+
+}
+
+.media img,
+.media video{
+
+    width:100%;
+
+    display:block;
+
+    max-height:700px;
+
+    object-fit:contain;
+
+}
+
+.texto{
+
+    padding:35px;
+
+}
+
+.texto h2{
+
+    font-size:2rem;
+
+    margin-bottom:15px;
+
+    font-family:'Cormorant Garamond',serif;
+
+    color:#ffd6e3;
+
+}
+
+.texto p{
+
+    line-height:1.9;
+
+    font-size:1.05rem;
+
+    color:#f3f3f3;
+
+}
+
+/* ==========================================
+            CARTA
+========================================== */
+
+#carta{
+
+    width:min(900px,90%);
+
+    margin:120px auto;
+
+    padding:60px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:25px;
+
+    text-align:center;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.35);
+
+}
+
+#carta h2{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:3rem;
+
+    margin-bottom:40px;
+
+}
+
+#carta p{
+
+    font-size:1.2rem;
+
+    line-height:2.1;
+
+}
+
+/* ==========================================
+            FOOTER
+========================================== */
+
+footer{
+
+    text-align:center;
+
+    padding:50px;
+
+    color:#bbb;
+
+    font-size:15px;
+
+}
+
+/* ==========================================
+            ANIMAÇÕES
+========================================== */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================================
+            RESPONSIVO
+========================================== */
+
+@media(max-width:768px){
+
+    .intro-container h1{
+
+        font-size:2.6rem;
+
+    }
+
+    .numero{
+
+        font-size:90px;
+
+    }
+
+    header h1{
+
+        font-size:2.8rem;
+
+    }
+
+    .texto{
+
+        padding:25px;
+
+    }
+
+    .texto h2{
+
+        font-size:1.6rem;
+
+    }
+
+    #carta{
+
+        padding:35px;
+
+    }
+
+    #carta h2{
+
+        font-size:2.2rem;
+
+    }
+
+    #carta p{
+
+        font-size:1rem;
+
+        line-height:1.8;
+
+    }
+
 }
