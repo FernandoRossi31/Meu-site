@@ -3,641 +3,400 @@
    Fernando & Ana Lívia
 ========================================== */
 
-:root{
-
-    --rosa:#ff4f81;
-    --rosa-claro:#ffd7e2;
-
-    --branco:#ffffff;
-
-    --texto:#f5f5f5;
-
-    --escuro:#111111;
-
-    --preto:#000000;
-
-    --glass:rgba(255,255,255,.12);
-
-    --glass-border:rgba(255,255,255,.25);
-
-    --sombra:0 20px 60px rgba(0,0,0,.35);
-
+:root {
+  --rosa: #ff4f81;
+  --rosa-claro: #ffd7e2;
+  --branco: #ffffff;
+  --texto: #f5f5f5;
+  --escuro: #111111;
+  --preto: #000000;
+  --glass: rgba(255, 255, 255, 0.12);
+  --glass-border: rgba(255, 255, 255, 0.25);
+  --sombra: 0 20px 60px rgba(0, 0, 0, 0.35);
 }
 
-*{
-
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html{
-
-    scroll-behavior:smooth;
-
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-    background: linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.9)), url("Fotos/TESTE.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* Mantém a imagem fixa em todas as fases */
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    overflow-x: hidden;
+  background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.9)), url("Fotos/TESTE.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Mantém a imagem fixa na rolagem */
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
 }
 
 /* ==========================
-        FIREWORKS
+   EFEITOS VISUAIS
 ========================== */
+#fireworks {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+}
 
-#fireworks{
+#hearts {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 998;
+}
 
-    position:fixed;
+.heartFloat {
+  position: absolute;
+  color: #ff5d8f;
+  animation: floatHeart linear infinite;
+  opacity: 0.7;
+}
 
-    inset:0;
-
-    pointer-events:none;
-
-    z-index:999;
-
+@keyframes floatHeart {
+  from {
+    transform: translateY(120vh);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  to {
+    transform: translateY(-20vh);
+    opacity: 0;
+  }
 }
 
 /* ==========================
-        HEARTS
+   TELA DE INTRODUÇÃO
 ========================== */
-
-#hearts{
-
-    position:fixed;
-
-    inset:0;
-
-    overflow:hidden;
-
-    pointer-events:none;
-
-    z-index:998;
-
-}
-
-.heartFloat{
-
-    position:absolute;
-
-    color:#ff5d8f;
-
-    animation:floatHeart linear infinite;
-
-    opacity:.7;
-
-}
-
-@keyframes floatHeart{
-
-    from{
-
-        transform:translateY(120vh);
-
-        opacity:0;
-
-    }
-
-    20%{
-
-        opacity:.8;
-
-    }
-
-    to{
-
-        transform:translateY(-20vh);
-
-        opacity:0;
-
-    }
-
-}
-
-/* ==========================
-        INTRO
-========================== */
-
 #intro {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-.intro-container{
-
-    width:min(800px,90%);
-
+.intro-container {
+  width: min(800px, 90%);
 }
 
-.heart{
-
-    font-size:70px;
-
-    animation:pulse 2s infinite;
-
+.heart {
+  font-size: 70px;
+  animation: pulse 2s infinite;
 }
 
-@keyframes pulse{
-
-    0%{
-
-        transform:scale(1);
-
-    }
-
-    50%{
-
-        transform:scale(1.25);
-
-    }
-
-    100%{
-
-        transform:scale(1);
-
-    }
-
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1); }
 }
 
-.intro-container h1{
-
-    margin-top:20px;
-
-    font-size:4rem;
-
-    font-family:'Cormorant Garamond',serif;
-
-    letter-spacing:2px;
-
+.intro-container h1 {
+  margin-top: 20px;
+  font-size: 4rem;
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 2px;
 }
 
-.intro-container span{
-
-    color:var(--rosa);
-
+.intro-container span {
+  color: var(--rosa);
 }
 
-#typing{
-
-    margin-top:40px;
-
-    min-height:80px;
-
-    font-size:1.3rem;
-
-    line-height:2;
-
+#typing {
+  margin-top: 40px;
+  min-height: 80px;
+  font-size: 1.3rem;
+  line-height: 2;
 }
 
-.numero{
-
-    margin-top:60px;
-
-    font-size:130px;
-
-    font-weight:bold;
-
-    color:var(--rosa);
-
-    opacity:0;
-
+.numero {
+  margin-top: 60px;
+  font-size: 130px;
+  font-weight: bold;
+  color: var(--rosa);
+  opacity: 0;
 }
 
-#btnComecar{
-
-    margin-top:60px;
-
-    padding:18px 55px;
-
-    border:none;
-
-    border-radius:60px;
-
-    background:var(--rosa);
-
-    color:white;
-
-    font-size:1.2rem;
-
-    cursor:pointer;
-
-    transition:.35s;
-
-    display:none;
-
+#btnComecar {
+  margin-top: 60px;
+  padding: 18px 55px;
+  border: none;
+  border-radius: 60px;
+  background: var(--rosa);
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 0.35s;
+  display: none; /* Controlado pelo JS */
 }
 
-#btnComecar:hover{
-
-    transform:scale(1.08);
-
-    box-shadow:0 0 30px #ff4f81;
-
-}
-/* ==========================================
-            LOGIN
-========================================== */
-
-.hidden{
-    display:none !important;
-}
-
-#login{
-    width:100%;
-    min-height:100vh;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    background:
-    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.90)),
-    url("Fotos/TESTE.jpg");
-
-    background-size:cover;
-    background-position:center;
-}
-
-.login-box{
-
-    width:min(420px,90%);
-
-    padding:45px;
-
-    background:rgba(255,255,255,.10);
-
-    backdrop-filter:blur(18px);
-
-    border:1px solid rgba(255,255,255,.25);
-
-    border-radius:25px;
-
-    box-shadow:0 20px 60px rgba(0,0,0,.35);
-
-    text-align:center;
-
-    animation:fadeUp 1s;
-
-}
-
-.login-box h2{
-
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:2.7rem;
-
-    margin-bottom:10px;
-
-}
-
-.login-box p{
-
-    opacity:.9;
-
-    margin-bottom:25px;
-
-}
-
-.login-box input{
-
-    width:100%;
-
-    padding:16px;
-
-    margin-bottom:18px;
-
-    border:none;
-
-    border-radius:50px;
-
-    outline:none;
-
-    font-size:16px;
-
-    text-align:center;
-
-}
-
-.login-box button{
-
-    width:100%;
-
-    padding:16px;
-
-    border:none;
-
-    border-radius:50px;
-
-    cursor:pointer;
-
-    background:#ff4f81;
-
-    color:white;
-
-    font-size:17px;
-
-    transition:.35s;
-
-}
-
-.login-box button:hover{
-
-    transform:translateY(-3px);
-
-    box-shadow:0 10px 25px rgba(255,79,129,.4);
-
-}
-
-#mensagem-erro{
-
-    display:none;
-
-    color:#ff8d8d;
-
-    margin-top:18px;
-
-    font-weight:bold;
-
+#btnComecar:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 30px var(--rosa);
 }
 
 /* ==========================================
-            SITE
+   TELA DE LOGIN
 ========================================== */
+.hidden {
+  display: none !important;
+}
 
+#login {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  width: min(420px, 90%);
+  padding: 45px;
+  background: var(--glass);
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--glass-border);
+  border-radius: 25px;
+  box-shadow: var(--sombra);
+  text-align: center;
+  animation: fadeUp 1s;
+}
+
+.login-box h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.7rem;
+  margin-bottom: 10px;
+}
+
+.login-box p {
+  opacity: 0.9;
+  margin-bottom: 25px;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 18px;
+  border: none;
+  border-radius: 50px;
+  outline: none;
+  font-size: 16px;
+  text-align: center;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  background: var(--rosa);
+  color: white;
+  font-size: 17px;
+  transition: 0.35s;
+}
+
+.login-box button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(255, 79, 129, 0.4);
+}
+
+#mensagem-erro {
+  display: none; /* Controlado pelo JS */
+  color: #ff8d8d;
+  margin-top: 18px;
+  font-weight: bold;
+}
+
+/* ==========================================
+   CONTEÚDO PRINCIPAL (SITE)
+========================================== */
 #site {
-    background: transparent;
+  background: transparent;
 }
 
-header{
-
-    text-align:center;
-
-    padding:90px 20px;
-
+header {
+  text-align: center;
+  padding: 90px 20px;
+  transition: transform 0.1s ease-out; /* Suaviza o parallax no JS */
 }
 
-header h1{
-
-    font-size:4rem;
-
-    font-family:'Cormorant Garamond',serif;
-
+header h1 {
+  font-size: 4rem;
+  font-family: 'Cormorant Garamond', serif;
 }
 
-header p{
-
-    margin-top:15px;
-
-    color:#ffd3df;
-
-    font-size:1.2rem;
-
+header p {
+  margin-top: 15px;
+  color: var(--rosa-claro);
+  font-size: 1.2rem;
 }
 
-.timeline{
-
-    width:min(1100px,92%);
-
-    margin:auto;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:80px;
-
-    padding-bottom:100px;
-
+.timeline {
+  width: min(1100px, 92%);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding-bottom: 100px;
 }
 
 /* ==========================================
-            CARDS
+   CARDS DA TIMELINE
 ========================================== */
-
-.card{
-
-    background:rgba(255,255,255,.06);
-
-    backdrop-filter:blur(10px);
-
-    border:1px solid rgba(255,255,255,.10);
-
-    border-radius:25px;
-
-    overflow:hidden;
-
-    box-shadow:0 20px 40px rgba(0,0,0,.35);
-
-    opacity:0;
-
-    transform:translateY(80px);
-
-    transition:1s;
-
+.card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  
+  /* Posição inicial antes de aparecer na tela */
+  opacity: 0;
+  transform: translateY(80px);
+  transition: opacity 1s ease, transform 1s ease;
 }
 
-.card.show{
-
-    opacity:1;
-
-    transform:translateY(0);
-
+/* Classe adicionada pelo JS quando o card entra na tela */
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.media{
-
-    background:black;
-
+.media {
+  background: black;
 }
 
 .media img,
-.media video{
-
-    width:100%;
-
-    display:block;
-
-    max-height:700px;
-
-    object-fit:contain;
-
+.media video {
+  width: 100%;
+  display: block;
+  max-height: 700px;
+  object-fit: contain;
 }
 
-.texto{
-
-    padding:35px;
-
+.texto {
+  padding: 35px;
 }
 
-.texto h2{
-
-    font-size:2rem;
-
-    margin-bottom:15px;
-
-    font-family:'Cormorant Garamond',serif;
-
-    color:#ffd6e3;
-
+.texto h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  font-family: 'Cormorant Garamond', serif;
+  color: #ffd6e3;
 }
 
-.texto p{
-
-    line-height:1.9;
-
-    font-size:1.05rem;
-
-    color:#f3f3f3;
-
+.texto p {
+  line-height: 1.9;
+  font-size: 1.05rem;
+  color: var(--texto);
 }
 
 /* ==========================================
-            CARTA
+   CARTA FINAL
 ========================================== */
-
-#carta{
-
-    width:min(900px,90%);
-
-    margin:120px auto;
-
-    padding:60px;
-
-    background:rgba(255,255,255,.08);
-
-    backdrop-filter:blur(15px);
-
-    border-radius:25px;
-
-    text-align:center;
-
-    box-shadow:0 25px 60px rgba(0,0,0,.35);
-
+#carta {
+  width: min(900px, 90%);
+  margin: 120px auto;
+  padding: 60px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+  
+  /* Efeito de revelar junto com os cards */
+  opacity: 0;
+  transform: translateY(80px);
+  transition: opacity 1s ease, transform 1s ease;
 }
 
-#carta h2{
-
-    font-family:'Cormorant Garamond',serif;
-
-    font-size:3rem;
-
-    margin-bottom:40px;
-
+#carta.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-#carta p{
+#carta h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  margin-bottom: 40px;
+}
 
-    font-size:1.2rem;
-
-    line-height:2.1;
-
+#carta p {
+  font-size: 1.2rem;
+  line-height: 2.1;
 }
 
 /* ==========================================
-            FOOTER
+   FOOTER
 ========================================== */
-
-footer{
-
-    text-align:center;
-
-    padding:50px;
-
-    color:#bbb;
-
-    font-size:15px;
-
+footer {
+  text-align: center;
+  padding: 50px;
+  color: #bbb;
+  font-size: 15px;
 }
 
 /* ==========================================
-            ANIMAÇÕES
+   ANIMAÇÕES GERAIS
 ========================================== */
-
-@keyframes fadeUp{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(40px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
-
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ==========================================
-            RESPONSIVO
+   RESPONSIVO (CELULARES E TABLETS)
 ========================================== */
-
-@media(max-width:768px){
-
-    .intro-container h1{
-
-        font-size:2.6rem;
-
-    }
-
-    .numero{
-
-        font-size:90px;
-
-    }
-
-    header h1{
-
-        font-size:2.8rem;
-
-    }
-
-    .texto{
-
-        padding:25px;
-
-    }
-
-    .texto h2{
-
-        font-size:1.6rem;
-
-    }
-
-    #carta{
-
-        padding:35px;
-
-    }
-
-    #carta h2{
-
-        font-size:2.2rem;
-
-    }
-
-    #carta p{
-
-        font-size:1rem;
-
-        line-height:1.8;
-
-    }
-
+@media (max-width: 768px) {
+  .intro-container h1 {
+    font-size: 2.6rem;
+  }
+  
+  .numero {
+    font-size: 90px;
+  }
+  
+  header h1 {
+    font-size: 2.8rem;
+  }
+  
+  .texto {
+    padding: 25px;
+  }
+  
+  .texto h2 {
+    font-size: 1.6rem;
+  }
+  
+  #carta {
+    padding: 35px;
+  }
+  
+  #carta h2 {
+    font-size: 2.2rem;
+  }
+  
+  #carta p {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
 }
