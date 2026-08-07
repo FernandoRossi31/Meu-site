@@ -4,7 +4,7 @@
 ========================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
-  const SENHA = "1234";
+  const SENHA = "0908";
 
   /* ===============================
      ELEMENTOS DO DOM
