@@ -30,7 +30,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed; /* Mantém a imagem fixa na rolagem */
+  background-attachment: fixed;
   color: white;
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
@@ -138,7 +138,7 @@ body {
   font-size: 1.2rem;
   cursor: pointer;
   transition: 0.35s;
-  display: none; /* Controlado pelo JS */
+  display: none;
 }
 
 #btnComecar:hover {
@@ -213,14 +213,14 @@ body {
 }
 
 #mensagem-erro {
-  display: none; /* Controlado pelo JS */
+  display: none;
   color: #ff8d8d;
   margin-top: 18px;
   font-weight: bold;
 }
 
 /* ==========================================
-   CONTEÚDO PRINCIPAL (SITE)
+   CONTEÚDO PRINCIPAL (GALERIA/SLIDER)
 ========================================== */
 #site {
   background: transparent;
@@ -228,8 +228,7 @@ body {
 
 header {
   text-align: center;
-  padding: 90px 20px;
-  transition: transform 0.1s ease-out; /* Suaviza o parallax no JS */
+  padding: 60px 20px 30px;
 }
 
 header h1 {
@@ -243,36 +242,43 @@ header p {
   font-size: 1.2rem;
 }
 
-.timeline {
-  width: min(1100px, 92%);
+.timeline-container {
+  width: min(900px, 92%);
   margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 80px;
-  padding-bottom: 100px;
+  padding-bottom: 60px;
 }
 
-/* ==========================================
-   CARDS DA TIMELINE
-========================================== */
+.timeline {
+  position: relative;
+  min-height: 500px;
+}
+
+/* Oculta os cards por padrão */
 .card {
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  display: none;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 25px;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-  
-  /* Posição inicial antes de aparecer na tela */
-  opacity: 0;
-  transform: translateY(80px);
-  transition: opacity 1s ease, transform 1s ease;
 }
 
-/* Classe adicionada pelo JS quando o card entra na tela */
-.card.show {
-  opacity: 1;
-  transform: translateY(0);
+/* Exibe apenas o card com a classe 'active' com efeito fade */
+.card.active {
+  display: block;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .media {
@@ -283,12 +289,13 @@ header p {
 .media video {
   width: 100%;
   display: block;
-  max-height: 700px;
+  max-height: 650px;
   object-fit: contain;
 }
 
 .texto {
   padding: 35px;
+  text-align: center;
 }
 
 .texto h2 {
@@ -305,33 +312,71 @@ header p {
 }
 
 /* ==========================================
+   CONTROLES DE NAVEGAÇÃO
+========================================== */
+.navegacao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  padding: 0 10px;
+}
+
+.navegacao button {
+  background: var(--rosa);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 8px 20px rgba(255, 79, 129, 0.3);
+}
+
+.navegacao button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(255, 79, 129, 0.5);
+}
+
+.navegacao button:disabled {
+  background: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.4);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+#contadorCards {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--rosa-claro);
+  background: rgba(0, 0, 0, 0.4);
+  padding: 8px 20px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================================
    CARTA FINAL
 ========================================== */
 #carta {
-  width: min(900px, 90%);
-  margin: 120px auto;
+  width: min(850px, 90%);
+  margin: 40px auto 80px;
   padding: 60px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
   border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   text-align: center;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
-  
-  /* Efeito de revelar junto com os cards */
-  opacity: 0;
-  transform: translateY(80px);
-  transition: opacity 1s ease, transform 1s ease;
-}
-
-#carta.show {
-  opacity: 1;
-  transform: translateY(0);
+  animation: fadeIn 1s ease-in-out;
 }
 
 #carta h2 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 3rem;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 #carta p {
@@ -350,53 +395,16 @@ footer {
 }
 
 /* ==========================================
-   ANIMAÇÕES GERAIS
-========================================== */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ==========================================
-   RESPONSIVO (CELULARES E TABLETS)
+   RESPONSIVO
 ========================================== */
 @media (max-width: 768px) {
-  .intro-container h1 {
-    font-size: 2.6rem;
-  }
-  
-  .numero {
-    font-size: 90px;
-  }
-  
-  header h1 {
-    font-size: 2.8rem;
-  }
-  
-  .texto {
-    padding: 25px;
-  }
-  
-  .texto h2 {
-    font-size: 1.6rem;
-  }
-  
-  #carta {
-    padding: 35px;
-  }
-  
-  #carta h2 {
-    font-size: 2.2rem;
-  }
-  
-  #carta p {
-    font-size: 1rem;
-    line-height: 1.8;
-  }
+  .intro-container h1 { font-size: 2.6rem; }
+  .numero { font-size: 90px; }
+  header h1 { font-size: 2.8rem; }
+  .texto { padding: 25px; }
+  .texto h2 { font-size: 1.6rem; }
+  .navegacao button { padding: 12px 20px; font-size: 0.9rem; }
+  #carta { padding: 30px; }
+  #carta h2 { font-size: 2.2rem; }
+  #carta p { font-size: 1rem; line-height: 1.8; }
 }
