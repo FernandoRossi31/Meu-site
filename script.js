@@ -4,7 +4,6 @@
 ========================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
-  // A senha para acessar o site
   const SENHA = "1234";
 
   /* ===============================
@@ -22,7 +21,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const hearts = document.getElementById("hearts");
   const cards = document.querySelectorAll(".card");
   const carta = document.getElementById("carta");
-  const header = document.querySelector("header");
+  const btnAnterior = document.getElementById("btnAnterior");
+  const btnProximo = document.getElementById("btnProximo");
+  const contadorCards = document.getElementById("contadorCards");
+  const timelineContainer = document.querySelector(".timeline-container");
+
+  let cardAtual = 0;
 
   /* ===============================
      1. MÁQUINA DE ESCREVER
@@ -39,7 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
       iniciarContagem();
     }
   }
-  // Inicia o efeito de digitação após 1 segundo
   setTimeout(escrever, 1000);
 
   /* ===============================
@@ -81,24 +84,21 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       fogos.start();
 
-      // Para os fogos após 6 segundos e mostra o botão
       setTimeout(() => {
         fogos.stop();
         mostrarBotao();
       }, 6000);
     }
 
-    // Tenta tocar a música (pode ser bloqueado pelo navegador sem interação)
     musica.play().catch(() => console.log("Clique necessário para tocar o áudio."));
   }
 
-  // Garante que a música toque ao primeiro clique na tela (política dos navegadores)
   document.body.addEventListener("click", () => {
     if (musica.paused) musica.play();
   }, { once: true });
 
   /* ===============================
-     4. BOTÃO COMEÇAR
+     4. BOTÃO COMEÇAR E LOGIN
   =============================== */
   function mostrarBotao() {
     btnComecar.style.display = "inline-block";
@@ -113,9 +113,6 @@ document.addEventListener("DOMContentLoaded", () => {
     login.classList.remove("hidden");
   });
 
-  /* ===============================
-     5. TELA DE LOGIN
-  =============================== */
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const senhaDigitada = document.getElementById("senha").value;
@@ -123,17 +120,61 @@ document.addEventListener("DOMContentLoaded", () => {
     if (senhaDigitada === SENHA) {
       login.classList.add("hidden");
       site.classList.remove("hidden");
-      revelarCards();
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      atualizarNavegacao();
     } else {
       mensagemErro.style.display = "block";
-      // Animação de tremor (shake) na mensagem de erro
       mensagemErro.animate([
         { transform: "translateX(-10px)" },
         { transform: "translateX(10px)" },
         { transform: "translateX(-10px)" },
         { transform: "translateX(0)" }
       ], { duration: 400 });
+    }
+  });
+
+  /* ===============================
+     5. TROCA DE SLIDES (1 EM 1)
+  =============================== */
+  function atualizarNavegacao() {
+    // Oculta todos os cards e pausa vídeos que estiverem tocando
+    cards.forEach((card) => {
+      card.classList.remove("active");
+      const video = card.querySelector("video");
+      if (video) video.pause();
+    });
+
+    // Exibe apenas o card atual
+    cards[cardAtual].classList.add("active");
+    contadorCards.innerText = `${cardAtual + 1} de ${cards.length}`;
+
+    // Desativa botão "Anterior" no primeiro slide
+    btnAnterior.disabled = cardAtual === 0;
+
+    // Altera o texto do botão no último slide
+    if (cardAtual >= cards.length - 1) {
+      btnProximo.innerText = "Ver Carta ❤️";
+    } else {
+      btnProximo.innerText = "Próximo ❯";
+    }
+  }
+
+  btnProximo.addEventListener("click", () => {
+    if (cardAtual < cards.length - 1) {
+      cardAtual++;
+      atualizarNavegacao();
+    } else {
+      // Ao passar do último item, revela a Carta Final
+      timelineContainer.classList.add("hidden");
+      carta.classList.remove("hidden");
+      carta.classList.add("show");
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    }
+  });
+
+  btnAnterior.addEventListener("click", () => {
+    if (cardAtual > 0) {
+      cardAtual--;
+      atualizarNavegacao();
     }
   });
 
@@ -151,52 +192,9 @@ document.addEventListener("DOMContentLoaded", () => {
     
     hearts.appendChild(heart);
     
-    // Remove o coração do DOM após a animação para não pesar a página
     setTimeout(() => {
       heart.remove();
     }, 13000);
   }
   setInterval(criarCoracao, 350);
-
-  /* ===============================
-     7. ANIMAÇÕES DE SCROLL (CARDS E CARTA)
-  =============================== */
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-      }
-    });
-  }, { threshold: 0.15 });
-
-  function revelarCards() {
-    cards.forEach(card => observer.observe(card));
-    if (carta) observer.observe(carta);
-  }
-
-  /* ===============================
-     8. EFEITOS VISUAIS EXTRAS
-  =============================== */
-  // Efeito Parallax no Header ao rolar a página
-  window.addEventListener("scroll", () => {
-    if (!header) return;
-    const y = window.scrollY;
-    header.style.transform = `translateY(${y * 0.15}px)`;
-  });
-
-  // Efeito Parallax no Background com o movimento do mouse
-  window.addEventListener("mousemove", (e) => {
-    const x = (e.clientX / window.innerWidth) - 0.5;
-    const y = (e.clientY / window.innerHeight) - 0.5;
-    document.body.style.backgroundPosition = `${50 + x * 2}% ${50 + y * 2}%`;
-  });
-
-  // Título da aba piscando
-  setInterval(() => {
-    document.title = document.title === "Um Ano de Nós ❤️" 
-      ? "❤️ Fernando & Ana Lívia ❤️" 
-      : "Um Ano de Nós ❤️";
-  }, 2000);
-
-  console.log("Projeto iniciado ❤️");
 });
