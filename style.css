@@ -375,10 +375,8 @@ body {
             SITE
 ========================================== */
 
-#site{
-
-    background:#111;
-
+#site {
+    background: transparent;
 }
 
 header{
