@@ -90,15 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
         mostrarBotao();
       }, 6000);
     }
-
-    musica.play().catch(() => console.log("Clique necessário para tocar o áudio."));
   }
-
-  document.body.addEventListener("click", () => {
-    if (musica.paused && !site.classList.contains("hidden") && surpresa.classList.contains("hidden") && paginaTexto.classList.contains("hidden")) {
-      musica.play();
-    }
-  }, { once: true });
 
   function mostrarBotao() {
     btnComecar.style.display = "inline-block";
@@ -111,6 +103,8 @@ document.addEventListener("DOMContentLoaded", () => {
   btnComecar.addEventListener("click", () => {
     intro.classList.add("hidden");
     login.classList.remove("hidden");
+    
+    musica.play().catch(e => console.log("Erro ao iniciar áudio:", e));
   });
 
   form.addEventListener("submit", (e) => {
@@ -185,6 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
       
       musica.pause();
       if(musicaSurpresa) {
+        musicaSurpresa.currentTime = 0;
         musicaSurpresa.play().catch(e => console.log("Erro ao tocar a música surpresa", e));
       }
     });
@@ -219,7 +214,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Ação para o botão de voltar direto ao início da galeria
   if (btnVoltarInicioGaleria) {
     btnVoltarInicioGaleria.addEventListener("click", () => {
       paginaTexto.classList.add("hidden");
