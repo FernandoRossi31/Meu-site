@@ -1,453 +1,217 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Um Ano de Nós ❤️</title>
-
-<link rel="stylesheet" href="style.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-
-<script src="https://cdn.jsdelivr.net/npm/fireworks-js@2/dist/index.umd.js"></script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Um Ano de Nós ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2/dist/index.umd.js"></script>
 </head>
-
 <body>
-
-<audio id="musica" loop>
-    <source src="musica.mp3" type="audio/mpeg">
-</audio>
-
-<div id="fireworks"></div>
-
-<div id="hearts"></div>
-
-<!-- ========================= -->
-<!-- ABERTURA -->
-<!-- ========================= -->
-
-<section id="intro">
-
-<div class="intro-container">
-
-<div class="heart">
-
-❤️
-
-</div>
-
-<h1>
-
-Fernando
-
-<span>&</span>
-
-Ana Lívia
-
-</h1>
-
-<p id="typing"></p>
-
-<div id="contador">
-
-<div class="numero">3</div>
-
-</div>
-
-<button id="btnComecar">
-
-Começar
-
-</button>
-
-</div>
-
-</section>
-
-<!-- ========================= -->
-<!-- LOGIN -->
-<!-- ========================= -->
-
-<section id="login" class="hidden">
-
-<div class="login-box">
-
-<h2>
-
-Nosso Cantinho ❤️
-
-</h2>
-
-<p>
-
-Digite a nossa senha...
-
-</p>
-
-<form id="form-login">
-
-<input
-type="password"
-id="senha"
-placeholder="Senha">
-
-<button>
-
-Entrar
-
-</button>
-
-</form>
-
-<p id="mensagem-erro">
-
-Senha incorreta ❤️
-
-</p>
-
-</div>
-
-</section>
-
-<!-- ========================= -->
-<!-- SITE -->
-<!-- ========================= -->
-
-<section id="site" class="hidden">
-
-<header>
-
-<h1>
-
-Nossa História
-
-</h1>
-
-<p>
-
-Feliz um ano de namoro ❤️
-
-</p>
-
-</header>
-
-<main class="timeline">
-<section class="card">
-
-<div class="media">
-
-<img src="Fotos/1.jpeg">
-
-</div>
-
-<div class="texto">
-
-<h2>
-
-Nosso Primeiro Momento
-
-</h2>
-
-<p>
-
-Aqui você vai escrever um texto especial contando o motivo dessa foto ser tão importante.
-
-</p>
-
-</div>
-
-</section>
-        <!-- FOTO 2 -->
-        <section class="card">
-            <div class="media">
-                <img src="Fotos/2.jpeg" alt="Foto 2">
+    <audio id="musica" loop>
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="fireworks"></div>
+    <div id="hearts"></div>
+
+    <!-- ========================= -->
+    <!-- ABERTURA -->
+    <!-- ========================= -->
+    <section id="intro">
+        <div class="intro-container">
+            <div class="heart">❤️</div>
+            <h1>Fernando <span>&</span> Ana Lívia</h1>
+            <p id="typing"></p>
+            <div id="contador">
+                <div class="numero">3</div>
             </div>
-
-            <div class="texto">
-                <h2>Momentos Inesquecíveis</h2>
-                <p>
-                    Algumas lembranças nunca deixam de fazer a gente sorrir.
-                    Cada instante ao seu lado faz minha vida muito mais feliz.
-                </p>
-            </div>
-        </section>
-
-        <!-- FOTO 3 -->
-        <section class="card">
-            <div class="media">
-                <img src="Fotos/3.jpeg" alt="Foto 3">
-            </div>
-
-            <div class="texto">
-                <h2>Seu Sorriso</h2>
-                <p>
-                    É impossível olhar para você e não me sentir a pessoa mais
-                    sortuda do mundo.
-                </p>
-            </div>
-        </section>
-
-        <!-- FOTO 4 -->
-        <section class="card">
-            <div class="media">
-                <img src="Fotos/4.jpeg" alt="Foto 4">
-            </div>
-
-            <div class="texto">
-                <h2>Nossos Dias</h2>
-                <p>
-                    Não importa onde estivermos.
-                    O melhor lugar sempre será ao seu lado.
-                </p>
-            </div>
-        </section>
-
-        <!-- FOTO 5 -->
-        <section class="card">
-            <div class="media">
-                <img src="Fotos/5.jpeg" alt="Foto 5">
-            </div>
-
-            <div class="texto">
-                <h2>Meu Lugar Favorito</h2>
-                <p>
-                    Meu lugar favorito sempre será aquele onde você estiver.
-                </p>
-            </div>
-        </section>
-
-        <!-- VÍDEO 1 -->
-        <section class="card">
-            <div class="media">
-                <video controls preload="metadata">
-                    <source src="Fotos/6.mp4" type="video/mp4">
-                </video>
-            </div>
-
-            <div class="texto">
-                <h2>Uma Lembrança Especial</h2>
-                <p>
-                    Existem momentos que nenhum tempo será capaz de apagar.
-                </p>
-            </div>
-        </section>
-
-        <!-- VÍDEO 2 -->
-        <section class="card">
-            <div class="media">
-                <video controls preload="metadata">
-                    <source src="Fotos/7.mp4" type="video/mp4">
-                </video>
-            </div>
-
-            <div class="texto">
-                <h2>Sorrisos</h2>
-                <p>
-                    Seu sorriso sempre será meu lugar de paz.
-                </p>
-            </div>
-        </section>
-
-        <!-- VÍDEO 3 -->
-        <section class="card">
-            <div class="media">
-                <video controls preload="metadata">
-                    <source src="Fotos/8.mp4" type="video/mp4">
-                </video>
-            </div>
-
-            <div class="texto">
-                <h2>Felicidade</h2>
-                <p>
-                    Cada momento vivido ao seu lado merece ser lembrado para sempre.
-                </p>
-            </div>
-        </section>
-
-        <!-- VÍDEO 4 -->
-        <section class="card">
-            <div class="media">
-                <video controls preload="metadata">
-                    <source src="Fotos/9.mp4" type="video/mp4">
-                </video>
-            </div>
-
-            <div class="texto">
-                <h2>Nosso Jeitinho</h2>
-                <p>
-                    Amo cada detalhe da nossa história.
-                </p>
-            </div>
-        </section>
-
-        <!-- VÍDEOS 10 ao 16 -->
-
-        <section class="card">
-            <div class="media">
-                <video controls preload="metadata">
-                    <source src="Fotos/10.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="texto">
-                <h2>Momentos Únicos</h2>
-                <p>Cada vídeo aqui representa um pedacinho da nossa felicidade.</p>
-            </div>
-        </section>
-
-        <section class="card">
-            <div class="media">
-                <video controls preload="metadata">
-                    <source src="Fotos/11.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="texto">
-                <h2>Você é Minha Paz</h2>
-                <p>Obrigado por transformar meus dias nos melhores da minha vida.</p>
-            </div>
-        </section>
-
-        <section class="card">
-            <div class="media">
-                <video controls preload="metadata">
-                    <source src="Fotos/12.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="texto">
-                <h2>Um Amor Verdadeiro</h2>
-                <p>Você faz cada sonho parecer possível.</p>
-            </div>
-        </section>
-
-        <section class="card">
-            <div class="media">
-                <video controls preload="metadata">
-                    <source src="Fotos/13.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="texto">
-                <h2>Nossa Jornada</h2>
-                <p>Que essa seja apenas a primeira página da nossa história.</p>
-            </div>
-        </section>
-
-        <section class="card">
-            <div class="media">
-                <video controls preload="metadata">
-                    <source src="Fotos/14.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="texto">
-                <h2>Meu Amor</h2>
-                <p>Você faz meu coração sorrir todos os dias.</p>
-            </div>
-        </section>
-
-        <section class="card">
-            <div class="media">
-                <video controls preload="metadata">
-                    <source src="Fotos/15.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="texto">
-                <h2>Para Sempre</h2>
-                <p>Que nunca nos faltem motivos para comemorar a nossa história.</p>
-            </div>
-        </section>
-
-        <section class="card">
-            <div class="media">
-                <video controls preload="metadata">
-                    <source src="Fotos/16.mp4" type="video/mp4">
-                </video>
-            </div>
-
-            <div class="texto">
-                <h2>O Começo de Tudo</h2>
-                <p>
-                    Este é apenas o primeiro capítulo da nossa vida juntos.
-                    Ainda temos uma eternidade para viver.
-                </p>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- CARTA FINAL -->
-
-    <section id="carta">
-
-        <h2>Uma Carta Para Você ❤️</h2>
-
-        <p>
-
-            Ana Lívia...
-
-            <br><br>
-
-            Se você chegou até aqui, é porque percorreu um pedacinho da nossa história.
-
-            <br><br>
-
-            Cada foto...
-
-            Cada vídeo...
-
-            Cada lembrança...
-
-            representa um momento que ficará para sempre guardado no meu coração.
-
-            <br><br>
-
-            Obrigado por transformar meus dias em momentos inesquecíveis.
-
-            Obrigado por cada abraço.
-
-            Obrigado por cada sorriso.
-
-            Obrigado por existir.
-
-            <br><br>
-
-            Feliz um ano de namoro.
-
-            <br><br>
-
-            Eu te amo infinitamente.
-
-            <br><br>
-
-            ❤️
-
-            <br><br>
-
-            Fernando
-
-        </p>
-
+            <button id="btnComecar">Começar</button>
+        </div>
     </section>
 
-    <footer>
+    <!-- ========================= -->
+    <!-- LOGIN -->
+    <!-- ========================= -->
+    <section id="login" class="hidden">
+        <div class="login-box">
+            <h2>Nosso Cantinho ❤️</h2>
+            <p>Digite a nossa senha...</p>
+            <form id="form-login">
+                <input type="password" id="senha" placeholder="Senha">
+                <button>Entrar</button>
+            </form>
+            <p id="mensagem-erro">Senha incorreta ❤️</p>
+        </div>
+    </section>
 
-        <p>
+    <!-- ========================= -->
+    <!-- SITE -->
+    <!-- ========================= -->
+    <section id="site" class="hidden">
+        <header>
+            <h1>Nossa História</h1>
+            <p>Feliz um ano de namoro ❤️</p>
+        </header>
 
-            Feito com muito amor para Ana Lívia ❤️
+        <main class="timeline">
+            <!-- FOTO 1 -->
+            <section class="card">
+                <div class="media">
+                    <img src="Fotos/Foto1.jpeg" alt="Foto 1">
+                </div>
+                <div class="texto">
+                    <h2>Nosso Primeiro Momento</h2>
+                    <p>Aqui você vai escrever um texto especial contando o motivo dessa foto ser tão importante.</p>
+                </div>
+            </section>
 
-        </p>
+            <!-- FOTO 2 -->
+            <section class="card">
+                <div class="media">
+                    <img src="Fotos/Foto2.jpeg" alt="Foto 2">
+                </div>
+                <div class="texto">
+                    <h2>Momentos Inesquecíveis</h2>
+                    <p>Algumas lembranças nunca deixam de fazer a gente sorrir. Cada instante ao seu lado faz minha vida muito mais feliz.</p>
+                </div>
+            </section>
 
-    </footer>
+            <!-- FOTO 3 -->
+            <section class="card">
+                <div class="media">
+                    <img src="Fotos/Foto3.jpeg" alt="Foto 3">
+                </div>
+                <div class="texto">
+                    <h2>Seu Sorriso</h2>
+                    <p>É impossível olhar para você e não me sentir a pessoa mais sortuda do mundo.</p>
+                </div>
+            </section>
 
-</section>
+            <!-- FOTO 4 -->
+            <section class="card">
+                <div class="media">
+                    <img src="Fotos/Foto4.jpeg" alt="Foto 4">
+                </div>
+                <div class="texto">
+                    <h2>Nossos Dias</h2>
+                    <p>Não importa onde estivermos. O melhor lugar sempre será ao seu lado.</p>
+                </div>
+            </section>
 
-<script src="script.js"></script>
+            <!-- FOTO 5 -->
+            <section class="card">
+                <div class="media">
+                    <img src="Fotos/Foto5.jpeg" alt="Foto 5">
+                </div>
+                <div class="texto">
+                    <h2>Meu Lugar Favorito</h2>
+                    <p>Meu lugar favorito sempre será aquele onde você estiver.</p>
+                </div>
+            </section>
 
+            <!-- VÍDEO 1 -->
+            <section class="card">
+                <div class="media">
+                    <video controls preload="metadata">
+                        <source src="Videos/Video1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="texto">
+                    <h2>Uma Lembrança Especial</h2>
+                    <p>Existem momentos que nenhum tempo será capaz de apagar.</p>
+                </div>
+            </section>
+
+            <!-- VÍDEO 2 -->
+            <section class="card">
+                <div class="media">
+                    <video controls preload="metadata">
+                        <source src="Videos/Video2.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="texto">
+                    <h2>Sorrisos</h2>
+                    <p>Seu sorriso sempre será meu lugar de paz.</p>
+                </div>
+            </section>
+
+            <!-- VÍDEO 3 -->
+            <section class="card">
+                <div class="media">
+                    <video controls preload="metadata">
+                        <source src="Videos/Video3.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="texto">
+                    <h2>Felicidade</h2>
+                    <p>Cada momento vivido ao seu lado merece ser lembrado para sempre.</p>
+                </div>
+            </section>
+
+            <!-- VÍDEO 4 -->
+            <section class="card">
+                <div class="media">
+                    <video controls preload="metadata">
+                        <source src="Videos/Video4.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="texto">
+                    <h2>Nosso Jeitinho</h2>
+                    <p>Amo cada detalhe da nossa história.</p>
+                </div>
+            </section>
+
+            <!-- VÍDEO 5 -->
+            <section class="card">
+                <div class="media">
+                    <video controls preload="metadata">
+                        <source src="Videos/Video5.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="texto">
+                    <h2>Momentos Únicos</h2>
+                    <p>Cada vídeo aqui representa um pedacinho da nossa felicidade.</p>
+                </div>
+            </section>
+
+            <!-- VÍDEO 6 -->
+            <section class="card">
+                <div class="media">
+                    <video controls preload="metadata">
+                        <source src="Videos/Video6.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="texto">
+                    <h2>Você é Minha Paz</h2>
+                    <p>Obrigado por transformar meus dias nos melhores da minha vida.</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- CARTA FINAL -->
+        <section id="carta">
+            <h2>Uma Carta Para Você ❤️</h2>
+            <p>
+                Ana Lívia... <br><br>
+                Se você chegou até aqui, é porque percorreu um pedacinho da nossa história. <br><br>
+                Cada foto... Cada vídeo... Cada lembrança... representa um momento que ficará para sempre guardado no meu coração. <br><br>
+                Obrigado por transformar meus dias em momentos inesquecíveis. Obrigado por cada abraço. Obrigado por cada sorriso. Obrigado por existir. <br><br>
+                Feliz um ano de namoro. <br><br>
+                Eu te amo infinitamente. <br><br>
+                ❤️ <br><br>
+                Fernando
+            </p>
+        </section>
+
+        <footer>
+            <p>Feito com muito amor para Ana Lívia ❤️</p>
+        </footer>
+    </section>
+
+    <script src="script.js"></script>
 </body>
-
 </html>
