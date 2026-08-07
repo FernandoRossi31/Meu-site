@@ -25,6 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnProximo = document.getElementById("btnProximo");
   const contadorCards = document.getElementById("contadorCards");
   const timelineContainer = document.querySelector(".timeline-container");
+  
+  // Novo botão para voltar da carta para a galeria
+  const btnVoltarGaleria = document.getElementById("btnVoltarGaleria");
 
   let cardAtual = 0;
 
@@ -177,6 +180,23 @@ document.addEventListener("DOMContentLoaded", () => {
       atualizarNavegacao();
     }
   });
+
+  /* ===============================
+     NOVO: BOTÃO VOLTAR PARA A GALERIA
+  =============================== */
+  if (btnVoltarGaleria) {
+    btnVoltarGaleria.addEventListener("click", () => {
+      // Oculta a carta final
+      carta.classList.add("hidden");
+      carta.classList.remove("show");
+      
+      // Exibe a galeria novamente no último card
+      timelineContainer.classList.remove("hidden");
+      
+      // Rola a página para a altura da galeria para melhor visualização
+      window.scrollTo({ top: site.offsetTop, behavior: "smooth" });
+    });
+  }
 
   /* ===============================
      6. CHUVA DE CORAÇÕES
