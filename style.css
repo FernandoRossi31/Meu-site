@@ -253,9 +253,8 @@ header p {
   min-height: 500px;
 }
 
-/* Oculta os cards por padrão */
-.card {
-  display: none;
+/* Cards de fotos e vídeos */
+.card, .card-surpresa {
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -264,8 +263,12 @@ header p {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
 }
 
-/* Exibe apenas o card com a classe 'active' com efeito fade */
-.card.active {
+.card {
+  display: none;
+}
+
+/* Efeito de exibição suave */
+.card.active, .card-surpresa {
   display: block;
   animation: fadeIn 0.6s ease-in-out;
 }
@@ -312,7 +315,7 @@ header p {
 }
 
 /* ==========================================
-   CONTROLES DE NAVEGAÇÃO
+   CONTROLES E BOTÕES (GERAIS)
 ========================================== */
 .navegacao {
   display: flex;
@@ -322,7 +325,15 @@ header p {
   padding: 0 10px;
 }
 
-.navegacao button {
+button {
+  outline: none;
+}
+
+/* Estilos gerais de botões do site */
+.navegacao button, 
+#btnVoltarGaleria, 
+#btnSurpresa, 
+#btnVoltarCarta {
   background: var(--rosa);
   color: white;
   border: none;
@@ -335,7 +346,10 @@ header p {
   box-shadow: 0 8px 20px rgba(255, 79, 129, 0.3);
 }
 
-.navegacao button:hover:not(:disabled) {
+.navegacao button:hover:not(:disabled),
+#btnVoltarGaleria:hover,
+#btnSurpresa:hover,
+#btnVoltarCarta:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 25px rgba(255, 79, 129, 0.5);
 }
@@ -358,7 +372,7 @@ header p {
 }
 
 /* ==========================================
-   CARTA FINAL
+   CARTA FINAL E TELA DE SURPRESA
 ========================================== */
 #carta {
   width: min(850px, 90%);
@@ -382,6 +396,20 @@ header p {
 #carta p {
   font-size: 1.2rem;
   line-height: 2.1;
+  margin-bottom: 35px;
+}
+
+.botoes-finais {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#surpresa {
+  width: min(900px, 92%);
+  margin: 0 auto 60px;
+  animation: fadeIn 1s ease-in-out;
 }
 
 /* ==========================================
@@ -403,8 +431,9 @@ footer {
   header h1 { font-size: 2.8rem; }
   .texto { padding: 25px; }
   .texto h2 { font-size: 1.6rem; }
-  .navegacao button { padding: 12px 20px; font-size: 0.9rem; }
+  .navegacao button, #btnVoltarGaleria, #btnSurpresa, #btnVoltarCarta { padding: 12px 20px; font-size: 0.9rem; }
   #carta { padding: 30px; }
   #carta h2 { font-size: 2.2rem; }
   #carta p { font-size: 1rem; line-height: 1.8; }
+  .botoes-finais { flex-direction: column-reverse; gap: 10px; }
 }
