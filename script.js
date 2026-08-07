@@ -6,15 +6,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   const SENHA = "0908";
 
-  /* ===============================
-     ELEMENTOS DO DOM
-  =============================== */
   const intro = document.getElementById("intro");
   const login = document.getElementById("login");
   const site = document.getElementById("site");
   const btnComecar = document.getElementById("btnComecar");
   
-  // Elementos de Áudio
   const musica = document.getElementById("musica");
   const musicaSurpresa = document.getElementById("musicaSurpresa");
   
@@ -30,22 +26,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const contadorCards = document.getElementById("contadorCards");
   const timelineContainer = document.querySelector(".timeline-container");
   
-  // Botões e Seções da Surpresa e Texto
   const btnVoltarGaleria = document.getElementById("btnVoltarGaleria");
   const btnSurpresa = document.getElementById("btnSurpresa");
   const surpresa = document.getElementById("surpresa");
   const btnVoltarCarta = document.getElementById("btnVoltarCarta");
   
-  // Novos elementos da Página Inteira de Texto
   const btnProximoTexto = document.getElementById("btnProximoTexto");
   const paginaTexto = document.getElementById("paginaTexto");
   const btnVoltarSurpresa = document.getElementById("btnVoltarSurpresa");
+  const btnVoltarInicioGaleria = document.getElementById("btnVoltarInicioGaleria");
 
   let cardAtual = 0;
 
-  /* ===============================
-     1. MÁQUINA DE ESCREVER
-  =============================== */
   const texto = "Existe uma história que eu jamais quero esquecer...";
   let pos = 0;
 
@@ -60,9 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   setTimeout(escrever, 1000);
 
-  /* ===============================
-     2. CONTAGEM REGRESSIVA
-  =============================== */
   function iniciarContagem() {
     let tempo = 3;
     numero.style.opacity = 1;
@@ -80,9 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 1000);
   }
 
-  /* ===============================
-     3. FOGOS DE ARTIFÍCIO E MÚSICA
-  =============================== */
   function iniciarFogos() {
     const container = document.getElementById("fireworks");
     if (typeof Fireworks !== "undefined" && container) {
@@ -114,9 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }, { once: true });
 
-  /* ===============================
-     4. BOTÃO COMEÇAR E LOGIN
-  =============================== */
   function mostrarBotao() {
     btnComecar.style.display = "inline-block";
     btnComecar.animate([
@@ -149,9 +132,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  /* ===============================
-     5. TROCA DE SLIDES (1 EM 1)
-  =============================== */
   function atualizarNavegacao() {
     cards.forEach((card) => {
       card.classList.remove("active");
@@ -189,10 +169,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  /* ===============================
-     6. BOTÕES FINAIS, SURPRESA E TEXTO
-  =============================== */
-  
   if (btnVoltarGaleria) {
     btnVoltarGaleria.addEventListener("click", () => {
       carta.classList.add("hidden");
@@ -201,7 +177,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ABRIR SURPRESA (FOTO 8) E TROCAR MÚSICA
   if (btnSurpresa) {
     btnSurpresa.addEventListener("click", () => {
       carta.classList.add("hidden");
@@ -215,7 +190,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // VOLTAR DA SURPRESA PARA A CARTA (E VOLTAR A MÚSICA ORIGINAL)
   if (btnVoltarCarta) {
     btnVoltarCarta.addEventListener("click", () => {
       surpresa.classList.add("hidden");
@@ -229,7 +203,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // AVANÇAR DA FOTO DA SURPRESA PARA A PÁGINA INTEIRA DE TEXTO
   if (btnProximoTexto) {
     btnProximoTexto.addEventListener("click", () => {
       surpresa.classList.add("hidden");
@@ -238,7 +211,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // VOLTAR DA PÁGINA DE TEXTO PARA A FOTO DA SURPRESA
   if (btnVoltarSurpresa) {
     btnVoltarSurpresa.addEventListener("click", () => {
       paginaTexto.classList.add("hidden");
@@ -247,9 +219,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ===============================
-     7. CHUVA DE CORAÇÕES
-  =============================== */
+  // Ação para o botão de voltar direto ao início da galeria
+  if (btnVoltarInicioGaleria) {
+    btnVoltarInicioGaleria.addEventListener("click", () => {
+      paginaTexto.classList.add("hidden");
+      timelineContainer.classList.remove("hidden");
+      cardAtual = 0;
+      atualizarNavegacao();
+      
+      if(musicaSurpresa) {
+        musicaSurpresa.pause();
+      }
+      musica.play().catch(e => console.log("Erro ao tocar música original", e));
+      
+      window.scrollTo({ top: site.offsetTop, behavior: "smooth" });
+    });
+  }
+
   function criarCoracao() {
     if (!hearts) return;
     const heart = document.createElement("div");
