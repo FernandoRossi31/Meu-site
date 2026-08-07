@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const site = document.getElementById("site");
   const btnComecar = document.getElementById("btnComecar");
   
-  // Elementos de Áudio (NOVO)
+  // Elementos de Áudio
   const musica = document.getElementById("musica");
   const musicaSurpresa = document.getElementById("musicaSurpresa");
   
@@ -30,10 +30,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const contadorCards = document.getElementById("contadorCards");
   const timelineContainer = document.querySelector(".timeline-container");
   
+  // Botões e Seções da Surpresa e Texto
   const btnVoltarGaleria = document.getElementById("btnVoltarGaleria");
   const btnSurpresa = document.getElementById("btnSurpresa");
   const surpresa = document.getElementById("surpresa");
   const btnVoltarCarta = document.getElementById("btnVoltarCarta");
+  
+  // Novos elementos da Página Inteira de Texto
+  const btnProximoTexto = document.getElementById("btnProximoTexto");
+  const paginaTexto = document.getElementById("paginaTexto");
+  const btnVoltarSurpresa = document.getElementById("btnVoltarSurpresa");
 
   let cardAtual = 0;
 
@@ -103,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   document.body.addEventListener("click", () => {
-    if (musica.paused && site.classList.contains("hidden") === false && surpresa.classList.contains("hidden")) {
+    if (musica.paused && !site.classList.contains("hidden") && surpresa.classList.contains("hidden") && paginaTexto.classList.contains("hidden")) {
       musica.play();
     }
   }, { once: true });
@@ -184,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ===============================
-     6. BOTÕES FINAIS E SURPRESA (COM MÚSICA)
+     6. BOTÕES FINAIS, SURPRESA E TEXTO
   =============================== */
   
   if (btnVoltarGaleria) {
@@ -195,14 +201,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ABRIR SURPRESA E TROCAR MÚSICA
+  // ABRIR SURPRESA (FOTO 8) E TROCAR MÚSICA
   if (btnSurpresa) {
     btnSurpresa.addEventListener("click", () => {
       carta.classList.add("hidden");
       surpresa.classList.remove("hidden");
       window.scrollTo({ top: site.offsetTop, behavior: "smooth" });
       
-      // Pausa a música 1 e toca a música 2
       musica.pause();
       if(musicaSurpresa) {
         musicaSurpresa.play().catch(e => console.log("Erro ao tocar a música surpresa", e));
@@ -210,18 +215,35 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // VOLTAR PARA CARTA E VOLTAR PARA MÚSICA ORIGINAL
+  // VOLTAR DA SURPRESA PARA A CARTA (E VOLTAR A MÚSICA ORIGINAL)
   if (btnVoltarCarta) {
     btnVoltarCarta.addEventListener("click", () => {
       surpresa.classList.add("hidden");
       carta.classList.remove("hidden");
       window.scrollTo({ top: site.offsetTop, behavior: "smooth" });
       
-      // Pausa a música 2 e volta para a música 1
       if(musicaSurpresa) {
         musicaSurpresa.pause();
       }
       musica.play().catch(e => console.log("Erro ao tocar música original", e));
+    });
+  }
+
+  // AVANÇAR DA FOTO DA SURPRESA PARA A PÁGINA INTEIRA DE TEXTO
+  if (btnProximoTexto) {
+    btnProximoTexto.addEventListener("click", () => {
+      surpresa.classList.add("hidden");
+      paginaTexto.classList.remove("hidden");
+      window.scrollTo({ top: site.offsetTop, behavior: "smooth" });
+    });
+  }
+
+  // VOLTAR DA PÁGINA DE TEXTO PARA A FOTO DA SURPRESA
+  if (btnVoltarSurpresa) {
+    btnVoltarSurpresa.addEventListener("click", () => {
+      paginaTexto.classList.add("hidden");
+      surpresa.classList.remove("hidden");
+      window.scrollTo({ top: site.offsetTop, behavior: "smooth" });
     });
   }
 
