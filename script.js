@@ -26,8 +26,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const contadorCards = document.getElementById("contadorCards");
   const timelineContainer = document.querySelector(".timeline-container");
   
-  // Novo botão para voltar da carta para a galeria
+  // Elementos novos: Botões e Tela de Surpresa
   const btnVoltarGaleria = document.getElementById("btnVoltarGaleria");
+  const btnSurpresa = document.getElementById("btnSurpresa");
+  const surpresa = document.getElementById("surpresa");
+  const btnVoltarCarta = document.getElementById("btnVoltarCarta");
 
   let cardAtual = 0;
 
@@ -139,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
      5. TROCA DE SLIDES (1 EM 1)
   =============================== */
   function atualizarNavegacao() {
-    // Oculta todos os cards e pausa vídeos que estiverem tocando
+    // Oculta todos os cards e pausa vídeos
     cards.forEach((card) => {
       card.classList.remove("active");
       const video = card.querySelector("video");
@@ -166,11 +169,10 @@ document.addEventListener("DOMContentLoaded", () => {
       cardAtual++;
       atualizarNavegacao();
     } else {
-      // Ao passar do último item, revela a Carta Final
+      // Vai para a Carta Final
       timelineContainer.classList.add("hidden");
       carta.classList.remove("hidden");
-      carta.classList.add("show");
-      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+      window.scrollTo({ top: site.offsetTop, behavior: "smooth" });
     }
   });
 
@@ -182,24 +184,37 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ===============================
-     NOVO: BOTÃO VOLTAR PARA A GALERIA
+     6. BOTÕES FINAIS E SURPRESA
   =============================== */
+  // Botão: Carta -> Voltar para a Galeria
   if (btnVoltarGaleria) {
     btnVoltarGaleria.addEventListener("click", () => {
-      // Oculta a carta final
       carta.classList.add("hidden");
-      carta.classList.remove("show");
-      
-      // Exibe a galeria novamente no último card
       timelineContainer.classList.remove("hidden");
-      
-      // Rola a página para a altura da galeria para melhor visualização
+      window.scrollTo({ top: site.offsetTop, behavior: "smooth" });
+    });
+  }
+
+  // Botão: Carta -> Abrir Surpresa
+  if (btnSurpresa) {
+    btnSurpresa.addEventListener("click", () => {
+      carta.classList.add("hidden");
+      surpresa.classList.remove("hidden");
+      window.scrollTo({ top: site.offsetTop, behavior: "smooth" });
+    });
+  }
+
+  // Botão: Surpresa -> Voltar para Carta
+  if (btnVoltarCarta) {
+    btnVoltarCarta.addEventListener("click", () => {
+      surpresa.classList.add("hidden");
+      carta.classList.remove("hidden");
       window.scrollTo({ top: site.offsetTop, behavior: "smooth" });
     });
   }
 
   /* ===============================
-     6. CHUVA DE CORAÇÕES
+     7. CHUVA DE CORAÇÕES
   =============================== */
   function criarCoracao() {
     if (!hearts) return;
