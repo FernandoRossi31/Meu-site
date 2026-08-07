@@ -253,7 +253,6 @@ header p {
   min-height: 500px;
 }
 
-/* Cards de fotos e vídeos */
 .card, .card-surpresa {
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(12px);
@@ -267,7 +266,6 @@ header p {
   display: none;
 }
 
-/* Efeito de exibição suave */
 .card.active, .card-surpresa {
   display: block;
   animation: fadeIn 0.6s ease-in-out;
@@ -315,7 +313,7 @@ header p {
 }
 
 /* ==========================================
-   CONTROLES E BOTÕES (GERAIS)
+   CONTROLES E BOTÕES
 ========================================== */
 .navegacao {
   display: flex;
@@ -325,15 +323,12 @@ header p {
   padding: 0 10px;
 }
 
-button {
-  outline: none;
-}
-
-/* Estilos gerais de botões do site */
 .navegacao button, 
 #btnVoltarGaleria, 
 #btnSurpresa, 
-#btnVoltarCarta {
+#btnVoltarCarta,
+#btnProximoTexto,
+#btnVoltarSurpresa {
   background: var(--rosa);
   color: white;
   border: none;
@@ -349,7 +344,9 @@ button {
 .navegacao button:hover:not(:disabled),
 #btnVoltarGaleria:hover,
 #btnSurpresa:hover,
-#btnVoltarCarta:hover {
+#btnVoltarCarta:hover,
+#btnProximoTexto:hover,
+#btnVoltarSurpresa:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 25px rgba(255, 79, 129, 0.5);
 }
@@ -413,6 +410,27 @@ button {
 }
 
 /* ==========================================
+   PÁGINA INTEIRA DE TEXTO ROMÂNTICO
+========================================== */
+#paginaTexto {
+  width: min(850px, 90%);
+  margin: 40px auto 80px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+  animation: fadeIn 1s ease-in-out;
+}
+
+#paginaTexto .card-surpresa {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+/* ==========================================
    FOOTER
 ========================================== */
 footer {
@@ -431,7 +449,7 @@ footer {
   header h1 { font-size: 2.8rem; }
   .texto { padding: 25px; }
   .texto h2 { font-size: 1.6rem; }
-  .navegacao button, #btnVoltarGaleria, #btnSurpresa, #btnVoltarCarta { padding: 12px 20px; font-size: 0.9rem; }
+  .navegacao button, #btnVoltarGaleria, #btnSurpresa, #btnVoltarCarta, #btnProximoTexto, #btnVoltarSurpresa { padding: 12px 20px; font-size: 0.9rem; }
   #carta { padding: 30px; }
   #carta h2 { font-size: 2.2rem; }
   #carta p { font-size: 1rem; line-height: 1.8; }
