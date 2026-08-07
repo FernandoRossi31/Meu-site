@@ -20,7 +20,7 @@
   <!-- Áudio de Fundo Principal -->
   <audio id="musica" src="musica.mp3" loop></audio>
   
-  <!-- Áudio da Surpresa (NOVO) -->
+  <!-- Áudio da Surpresa -->
   <audio id="musicaSurpresa" src="musica2.mp3" loop></audio>
 
   <!-- Efeitos de Fundo -->
@@ -256,7 +256,32 @@
       </div>
       
       <div class="navegacao" style="justify-content: center; margin-top: 25px;">
-        <button id="btnVoltarCarta">❮ Voltar para a carta</button>
+        <!-- Botão para avançar para a página inteira de texto -->
+        <button id="btnProximoTexto">Continuar para o texto especial ❯</button>
+      </div>
+    </section>
+
+    <!-- PÁGINA INTEIRA DE TEXTO ROMÂNTICO (NOVA) -->
+    <section id="paginaTexto" class="hidden">
+      <div class="card-surpresa" style="padding: 40px;">
+        <div class="texto" style="text-align: left;">
+          <h2 style="text-align: center; margin-bottom: 25px;">Meu Amor Por Você ❤️</h2>
+          
+          <!-- EDITE SEU TEXTO LONGO AQUI EMBAIXO -->
+          <p style="margin-bottom: 20px; font-size: 1.1rem; line-height: 2;">
+            Escreva aqui o seu texto completo. Você pode falar sobre como ela mudou a sua vida, sobre os planos para o futuro, sobre cada detalhe que você ama nela...
+          </p>
+          <p style="margin-bottom: 20px; font-size: 1.1rem; line-height: 2;">
+            Pode colocar quantos parágrafos você quiser aqui dentro! Cada parágrafo fica com um espaçamento ótimo para leitura.
+          </p>
+          <p style="font-size: 1.1rem; line-height: 2;">
+            Com todo o meu amor, para sempre seu, Fernando. ❤️
+          </p>
+        </div>
+      </div>
+      
+      <div class="navegacao" style="justify-content: center; margin-top: 25px;">
+        <button id="btnVoltarSurpresa">❮ Voltar para a foto</button>
       </div>
     </section>
 
@@ -268,4 +293,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
