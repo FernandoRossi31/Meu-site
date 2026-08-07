@@ -13,7 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const login = document.getElementById("login");
   const site = document.getElementById("site");
   const btnComecar = document.getElementById("btnComecar");
+  
+  // Elementos de Áudio (NOVO)
   const musica = document.getElementById("musica");
+  const musicaSurpresa = document.getElementById("musicaSurpresa");
+  
   const typing = document.getElementById("typing");
   const numero = document.querySelector(".numero");
   const mensagemErro = document.getElementById("mensagem-erro");
@@ -26,7 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const contadorCards = document.getElementById("contadorCards");
   const timelineContainer = document.querySelector(".timeline-container");
   
-  // Elementos novos: Botões e Tela de Surpresa
   const btnVoltarGaleria = document.getElementById("btnVoltarGaleria");
   const btnSurpresa = document.getElementById("btnSurpresa");
   const surpresa = document.getElementById("surpresa");
@@ -100,7 +103,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   document.body.addEventListener("click", () => {
-    if (musica.paused) musica.play();
+    if (musica.paused && site.classList.contains("hidden") === false && surpresa.classList.contains("hidden")) {
+      musica.play();
+    }
   }, { once: true });
 
   /* ===============================
@@ -142,21 +147,17 @@ document.addEventListener("DOMContentLoaded", () => {
      5. TROCA DE SLIDES (1 EM 1)
   =============================== */
   function atualizarNavegacao() {
-    // Oculta todos os cards e pausa vídeos
     cards.forEach((card) => {
       card.classList.remove("active");
       const video = card.querySelector("video");
       if (video) video.pause();
     });
 
-    // Exibe apenas o card atual
     cards[cardAtual].classList.add("active");
     contadorCards.innerText = `${cardAtual + 1} de ${cards.length}`;
 
-    // Desativa botão "Anterior" no primeiro slide
     btnAnterior.disabled = cardAtual === 0;
 
-    // Altera o texto do botão no último slide
     if (cardAtual >= cards.length - 1) {
       btnProximo.innerText = "Ver Carta ❤️";
     } else {
@@ -169,7 +170,6 @@ document.addEventListener("DOMContentLoaded", () => {
       cardAtual++;
       atualizarNavegacao();
     } else {
-      // Vai para a Carta Final
       timelineContainer.classList.add("hidden");
       carta.classList.remove("hidden");
       window.scrollTo({ top: site.offsetTop, behavior: "smooth" });
@@ -184,9 +184,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ===============================
-     6. BOTÕES FINAIS E SURPRESA
+     6. BOTÕES FINAIS E SURPRESA (COM MÚSICA)
   =============================== */
-  // Botão: Carta -> Voltar para a Galeria
+  
   if (btnVoltarGaleria) {
     btnVoltarGaleria.addEventListener("click", () => {
       carta.classList.add("hidden");
@@ -195,21 +195,33 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Botão: Carta -> Abrir Surpresa
+  // ABRIR SURPRESA E TROCAR MÚSICA
   if (btnSurpresa) {
     btnSurpresa.addEventListener("click", () => {
       carta.classList.add("hidden");
       surpresa.classList.remove("hidden");
       window.scrollTo({ top: site.offsetTop, behavior: "smooth" });
+      
+      // Pausa a música 1 e toca a música 2
+      musica.pause();
+      if(musicaSurpresa) {
+        musicaSurpresa.play().catch(e => console.log("Erro ao tocar a música surpresa", e));
+      }
     });
   }
 
-  // Botão: Surpresa -> Voltar para Carta
+  // VOLTAR PARA CARTA E VOLTAR PARA MÚSICA ORIGINAL
   if (btnVoltarCarta) {
     btnVoltarCarta.addEventListener("click", () => {
       surpresa.classList.add("hidden");
       carta.classList.remove("hidden");
       window.scrollTo({ top: site.offsetTop, behavior: "smooth" });
+      
+      // Pausa a música 2 e volta para a música 1
+      if(musicaSurpresa) {
+        musicaSurpresa.pause();
+      }
+      musica.play().catch(e => console.log("Erro ao tocar música original", e));
     });
   }
 
